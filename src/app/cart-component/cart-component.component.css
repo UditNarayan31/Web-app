@@ -1,0 +1,19 @@
+.text-center{
+    font-weight: 400;
+    font-size: 17px;
+}
+.text-center .fa{
+    font-weight: 400;
+    font-size: 17px;
+}
+.helper-text{
+    color: brown;
+}
+.notification{
+    bottom: 200px;
+    background-color: rgba(0, 17, 255, 0.87);
+    width: 40%;
+    color: whitesmoke;
+    left: 50%;
+    border-radius: 12px;
+}

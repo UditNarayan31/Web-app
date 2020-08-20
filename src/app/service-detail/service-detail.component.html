@@ -1,0 +1,30 @@
+<div class="container mt-5">
+ <div class="row">
+   <div class="col-lg-3">
+    <h2>Service Detail</h2>
+   
+   </div>
+   <div class="col-lg-3">
+   <p [@fadeInOut]=currentState class="alert" id="aap">{{messNot}}</p>
+   </div>
+   <div class="col-lg-6">
+    <button (click)="addToCart(services)"  class="btn btn-success mt-3 pull-right"><i class="fa fa-shopping-bag"></i>&nbsp;{{ placeholder }}</button>
+   </div>
+ </div>
+<p *ngFor="let item of items"></p>
+
+    <div *ngIf="services">
+        <div class="card mt-3">
+            <img [src]="services.image" alt="">
+            <h4 class="mt-3">{{ services.title }}</h4>
+          <p>{{ services.text1 }}</p>
+          <p>{{ services.features }}</p>
+          <p>{{ services.text2 }}</p>
+          <i class="fa fa-rupee">{{ services.rupee }}</i><br>
+         
+       
+        </div>
+        </div>
+
+       
+</div>

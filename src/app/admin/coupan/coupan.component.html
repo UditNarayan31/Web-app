@@ -1,0 +1,12 @@
+<div class="container mt-5" style="padding-top:100px;">
+    <form [formGroup]="coupanGen" (ngSubmit)="addCoupan(coupanGen.value)">
+        <div class="form-group">
+            <label id="coupan">Generate Coupan</label>
+            <input id="coupan" class="form-control" width="50" formControlName="coupan">
+        </div>
+        <button type="submit" class="btn btn-success">Generate</button>
+    </form>
+    <div class="alert alert-danger mt-5" *ngIf="addMess">
+       {{showMess}}
+    </div>
+</div>

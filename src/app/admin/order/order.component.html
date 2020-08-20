@@ -1,0 +1,57 @@
+
+<table class="table">
+<thead>
+    <tr>
+        <th>OrderId</th>
+        <th>Customer mailId</th>
+        <th>Extra Reqirement</th>
+        <th>Total</th>
+    </tr>
+</thead>
+<tbody>
+    <tr class="table-succss" *ngFor="let item of orderlist; let i = index">
+       <th scope="row">{{i+1}}</th>
+       <td>{{item.email}}</td>
+       <td>{{item.require}}</td>
+       <td>{{item.total}}</td>
+       <!-- Button trigger modal -->
+ <!-- order modal -->
+ <button type="button" (click)=toggle(i) class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    {{ showMore }}
+  </button>
+  <td>
+    <tr class="list-group list-group-flush" [attr.id]="'undoBtn'+i" *ngIf="showBtn === i" >
+ <!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+ <div class="modal-content">
+ <div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<td class="list-group-item" *ngFor="let a of item.items | keyvalue;let i = index">{{i + 1}} 
+  
+  <tr class="list-group list-group-flush" >
+ 
+    <td class="list-group-item list-group-item-primary" *ngFor="let b of a.value | keyvalue">{{b.key}}  ::
+     {{b.value}}
+    </td>
+   </tr>
+</td>
+</div>
+</div>
+</div>
+</div>
+</tr>
+</td>         
+
+     </tr>
+</tbody>
+</table>
+
+
+
+ 

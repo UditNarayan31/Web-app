@@ -1,0 +1,26 @@
+.resposive{
+    opacity: 0.8;
+    width: 90%;
+     height: 150px;
+    
+}
+.container{
+    padding-top: 50px;
+    
+}
+
+
+.checkout{
+background-color: rgb(71, 255, 47);
+}
+
+.helper-text{
+    color: red;
+}
+
+.messAlert{
+   text-align: center;
+   font-weight: 500;
+    padding: 80px;
+    transition: 5s;
+}

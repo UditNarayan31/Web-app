@@ -1,0 +1,132 @@
+<div class="container mt-5">
+ <div *ngIf="items.length === 0" class="alert alert-danger mt-5">
+          Cart Is Empty
+</div>
+
+
+<div class="row"  *ngIf="items.length > 0">
+
+
+<!-- cart -->
+ <!-- first secton -->
+  <div class="col-lg-8">
+    
+   
+    <div class="row shadow p-3" *ngFor="let item of items; let i = index" [attr.data-index]="i">
+      <!-- 1 -->
+        <div class="col-sm-4">
+        <img [src]="item.image" alt="" class="resposive">
+       <div class="row mt-5">
+         <div class="col">
+          <button type="button" min="1" max="5" (click)="onAdd(item)" class="btn btn-outline-success">
+           +
+          </button>
+         </div>
+         <div class="col" style="text-align: center;">
+          <p >{{item.qty}}</p>
+         </div>
+         <div class="col">
+          <button type="button" (click)="onRemove(item)" class="btn btn-outline-danger">
+
+          -
+          </button>
+         </div>
+       </div>
+      </div>
+
+<!-- 2 -->
+          <div class="col-sm-3">
+        {{ i+1 }}
+      
+          <label>Service Category</label>
+          <h3>{{ item.title }}</h3><br>
+         <h5><i class="fa fa-rupee"></i>&nbsp;{{ item.rupee * item.qty  }}</h5>
+         <button type="button" class="btn" (click)="clearItem(i)"  style="background-color: transparent; border: none;">Remove</button>
+         </div>
+<!-- 3 -->
+         <div class="col-sm-2 mt-6">
+         <label>Price</label>
+          <hr>
+          <span>{{item.rupee | currency:"INR"}}</span>
+          </div>
+
+<!-- 4 -->
+<div class="col-sm-3 mt-6">
+  <p>Delivery by Thu Jul 16 | Free₹80</p>
+  
+  <p class="text-muted">10 Days Replacement Policy</p>
+</div>
+</div>
+</div>
+
+<!-- second section -->
+
+<div class="col-lg-4 fixed">
+ 
+    
+    <div class="navbar">
+      
+          <h3 class="w3-animate-bottom">Total amount: <i class="fa fa-rupee"></i> {{ total }} </h3>
+      
+            <button class="btn" (click)="clearCart()"><i class="fa fa-trash"></i> Clear Cart</button>
+
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="form-group">
+              <div class="card-body">
+              Enter Your Details
+              </div>
+ <span class="red-text">Required All*</span>
+                <div>
+               
+                 <input type="hidden" [ngModel]="total" class="form-control"  formControlName="total">
+                 <input type="hidden" [ngModel]="items" class="form-control"  formControlName="items">
+               
+                 <label for="name">
+                   Name
+               </label>
+               <input type="text" class="form-control" id="name" formControlName="name">
+               <div *ngIf="checkoutForm.get('name').touched && checkoutForm.get('name').errors?.required">
+              <span class="helper-text">Name is required</span>
+               </div>
+              </div>
+             <div>
+                 <label for="summery">
+                     Specific Requirment &nbsp;&nbsp; <small class="text-muted">max 250 words</small>
+                 </label>
+               <textarea class="form-control" maxlength="250" id="summery" formControlName="summery"></textarea>
+               <div *ngIf="checkoutForm.get('summery').touched && checkoutForm.get('summery').errors?.required">
+                 <span class="helper-text">This field riquired</span>
+                  </div>
+             </div>
+            
+             <button class="checkout btn  mt-5" [disabled]="checkoutForm.invalid" type="submit"><i class="fa fa-shopping-basket"></i> Checkout</button>
+            
+     </form>
+    </div>
+    <div *ngIf="showadd" class="messAlert fixed-bottom">
+     <p class="w3-animate-bottom mt-2  alert alert-primary"> <i class="fa fa-check-circle"></i> &nbsp;&nbsp;{{noti}} 
+    </p>
+    
+    </div>
+    
+   
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+                    
+           

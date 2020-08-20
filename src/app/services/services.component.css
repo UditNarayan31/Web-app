@@ -1,0 +1,21 @@
+.card img{
+    height:200px;
+    display: inline-block;
+    animation: zoomIn;
+    width:100%;
+
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1.5s; /* don't forget to set a duration! */
+  
+}
+.card-group  .card:hover {
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+}
+.nav-link{
+    color:black;
+}
+.card{
+    padding-top: 70px;
+}
+
+

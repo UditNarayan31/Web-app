@@ -1,0 +1,21 @@
+<table class="table table-sm">
+    <thead>
+        <th>Images</th>
+        <th>Fullname</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Loaction</th>
+    </thead>
+    <ng-container *ngFor="let item of customerArray">
+        <tr class="table-dark">
+            <td><img [src]="item.imageUrl" alt="web-app" width="40%" class="thumbnail"></td>
+            <td>{{item.fullName}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.location}}</td>
+            <td><button class="btn" (click)="customerService.populateForm(item)"><i class="fa fa-pencil"></i></button></td>
+            <td><button class="btn" (click)="onDelete(item.$key)"><i class="fa fa-trash"></i></button></td>
+        </tr>
+
+    </ng-container>
+</table>

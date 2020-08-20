@@ -1,0 +1,158 @@
+<div class="container mt-5" style="padding-top: 70px;">
+    <div *ngIf="items.length === 0" class="alert alert-danger mt-5" data-aos="fade-up">
+        Your Cart is Empty
+    </div>
+    <div *ngIf="items.length > 0">
+    <div class="row" style="position: relative;">
+        <div class="col-sm-6">
+
+
+            <div class="card mt-2 shadow" data-aos="fade-up" style="width: 34rem;" *ngFor="let item of items; let i = index">
+              <img [src]="item.imageUrl" alt="web-app" class="img-thumbnail">
+              <div class="card-body">
+                    <button class="btn d-inline" (click)="incrementQty(item)">
+                      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
+                      </svg>
+                    </button>
+                       {{item.qty}}
+                    <button class="btn d-inline" (click)="decrimentQty(item)">
+                      <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4 7.5a.5.5 0 0 0 0 1h8a.5.5 0 0 0 0-1H4z"/>
+                      </svg>
+                    </button>&nbsp;
+                  <h5 class="card-title">{{item.caption}}</h5>
+                  <p class="text-muted">{{item.card}}</p>
+                  <h5><i class="fa fa-rupee"></i>&nbsp;{{item.admin}}</h5>  
+                  <button class="btn pull-right" (click)="deleteItem(i)"><i class="fa fa-trash"></i>Remove Item</button>
+                </div>
+              </div>
+           </div>
+           <div style="float: right;">
+            <div class="col-sm-6" style="position: fixed;">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-header shadow bg-dark" style="color: rgba(255, 255, 255, 0.952);">
+                            <h4 class="d-inline">Total&nbsp;<i class="fa fa-rupee"></i>&nbsp;{{grandTotal}}</h4>&nbsp;
+                            <p class="d-inline" data-aos="fade-up" style="color: rgba(255, 94, 0, 0.911);" *ngIf="updated">total updated</p>
+                        </div>
+                    </div>
+                 </div>
+                 <table class="table">
+                    <th>product</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                        <tr *ngFor="let cart of items">
+                            <td>{{cart.caption}}</td>
+                            <td>{{cart.qty}}X</td>
+                            <td><i class="fa fa-rupee"></i>{{cart.admin}}</td>
+                        </tr>
+                    </table>
+                     <!-- checkout Modal btn -->
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-shopping-basket"></i>&nbsp;Checkout
+          </button>
+             <!-- checkout Modal btn -->
+                  </div>
+                </div>
+           </div>
+
+       
+      
+
+          
+          <!-- checkout Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Enter Your Details</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="jumbotron">
+                        <p>Yout Services</p>
+                       <table class="table" style="font-size: 15px;">
+                                <th>product</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                    <tr *ngFor="let cart of items">
+                                        <td style="width:40%"><img [src]="cart.imageUrl" alt="" width="20%"></td>
+                                        <td>{{cart.caption}}</td>
+                                        <td>{{cart.qty}}&nbsp; x</td>
+                                        <td><i class="fa fa-rupee"></i>{{cart.admin}}</td>
+                                    </tr>
+                                    <hr>
+                                    <tr>
+                                        <td><p class="d-inline">your total</p><h5 class="d-inline">&nbsp;<i class="fa fa-rupee"></i>&nbsp;{{grandTotal}}</h5></td>
+                                        <td>
+                                          <p>Enter COUPON here</p>
+                                          <form [formGroup]="coupanForm" (ngSubmit)="addCoupan(coupanForm.value);clicked = true">
+                                            <div class="row">
+                                             <div class="col-sm-6">
+                                                <input class="form-control d-inline" formControlName="coup"><br>
+                                             
+                                                  <p class="card-text" *ngIf="couponShow">{{couponMess}}</p>
+                                                
+                                              </div>
+                                              <div class="col-sm-6">
+                                                <button type="submit" [disabled]="clicked" class="btn btn-dark d-inline">Apply</button>
+                                               </div>
+                                            </div>
+                                          </form>
+                                        </td>
+                                      </tr>
+                                </table>
+                               
+                                
+                                <hr>
+                                <!-- details-form -->
+                                <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input class="form-control" id="email" formControlName="email">
+                                        <div *ngIf="checkoutForm.get('email').touched && checkoutForm.get('email').errors?.required">
+                                            <span class="helper-text">Enter your email</span>
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="req">Extra Requirment</label>
+                                          <textarea class="form-control" id="req" formControlName="require"></textarea>
+                                          <div *ngIf="checkoutForm.get('require').touched && checkoutForm.get('require').errors?.required">
+                                            <span class="helper-text">we need your opinion</span>
+                                        </div>
+                                        </div>
+                               <input type="hidden" [ngModel]="grandTotal" formControlName="total">
+                               <input type="hidden" [ngModel]="items" formControlName="items">
+                                  <!--end details-form -->
+                                  <button type="submit" [disabled]="checkoutForm.invalid" class="btn btn-primary">Submit</button>
+              
+                                </form>
+                            </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" id="closeModalButton" data-dismiss="modal">Close</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--End checkout Modal -->
+    
+  
+          <!--notification -->
+
+          <div class="notification text-center fixed-bottom" *ngIf="showMess" data-aos="fade-up">
+            <div class="alert">
+              <p>{{alertMess}}</p>
+            </div>
+           </div>
+
+         
+        
+   
+
+</div>
+</div>

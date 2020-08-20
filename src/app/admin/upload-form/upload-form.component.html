@@ -1,0 +1,119 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" (click)="reload()" data-toggle="modal" data-target="#exampleModal">
+    Upload Data
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+     
+        <div class="modal-body">
+            <form [formGroup]="formTemplate" (ngSubmit)="onSubmit(formTemplate.value)">
+                <input type="hidden" formControlName="$key">
+             
+              
+              
+                <div class="text-center">
+                     <img [src]="uploadImg" alt="" width="250px" height="150" (click)="fileUploader.click()">
+                 </div>
+
+ 
+
+                <div class="form-group">
+ 
+                    <label for="file">Select File</label>
+                   <input type="file" id="file" accept="image/*" class="form-control" #fileUploader (change)="showPreview($event)" formControlName="imageUrl">
+                     
+                  <div class="text-danger" *ngIf="formTemplate.get('imageUrl').touched && formTemplate.get('imageUrl').errors?.required">This field is required</div>
+                </div>
+                <div class="form-group">
+                  <label for="num">Quantity</label>
+                    <input type="text" id="num" formControlName="qty" class="form-control">
+                  
+                </div>
+        
+                <div class="form-group">
+                    <label for="name">Product Name</label>
+                    <input id="name" class="form-control" placeholder="Title" formControlName="caption">
+                    <div class="text-danger" *ngIf="formTemplate.get('caption').touched && formTemplate.get('caption').errors?.required">This field is required</div>
+                </div>
+               <div class="form-group">
+                    <label for="card">Card</label>
+                    <input class="form-control" id="card" placeholder="Card" formControlName="card">
+                </div>
+        
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <input class="form-control" id="desc" placeholder="Description" formControlName="desc">
+                </div>
+                <div class="form-group">
+                    <label for="admin">Price</label>
+                    <input class="form-control" id="admin" placeholder="Price" formControlName="admin">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Add Item</button>
+                   
+                </div>
+                <div class="form-group">
+                    <div class="alert alert-info" *ngIf="showMessage">
+                        data submitted successfully
+                            </div>
+                </div>
+            </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+    <!-- service upload list -->
+       
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Card</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Update</th>
+            <th scope="col">Remove</th>
+          
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of serviceArray; let i = index" >
+            <th scope="row">{{i+1}}</th>
+            <td width="30%"><img [src]="item.imageUrl" width="30%" alt="web-app"></td>
+            <td>{{item.caption}}</td>
+            <td>{{item.card}}</td>
+            <td>{{item.desc}}</td>
+            <td>{{item.admin}}</td>
+            <td><button type="button" class="btn" (click)="updateData(item)" data-toggle="modal" data-target="#exampleModal">
+              <i class="fa fa-pencil"></i>
+            </button></td>
+            <td><button class="btn"  (click)="onDelete(item.$key)"><i class="fa fa-trash"></i></button></td>
+          </tr>
+         </tbody>
+      </table>
+    
+     
+    
+    
+    
+    
+      
+    
+ 
+
+
+

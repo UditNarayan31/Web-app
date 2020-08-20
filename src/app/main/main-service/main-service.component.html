@@ -1,0 +1,18 @@
+<div class="card text-center mt-5">
+  
+    <div class="card-header">
+      <h5 class=" title card-title">{{ serviceHead.title }}</h5>
+    </div>
+    <div class="card-body">
+    <p class="card-text">{{ serviceHead.text }}</p>
+   </div>
+  </div>
+<div class="container">
+    <div class="card-group mt-5">
+        <div class="card m-2" *ngFor="let item of serviceList index as detailId">
+          <a [routerLink]="['/main-service', detailId]" class="nav-link">
+         <app-service-item [serviceItem]="item"></app-service-item>
+          </a>
+        </div>   
+    </div>
+</div>

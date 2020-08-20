@@ -1,0 +1,17 @@
+.card{
+    top: 30px;
+}
+.card-group  .card:hover {
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+}
+.title{
+  
+    display: inline-block;
+    margin: 0 0.5rem;
+  
+    animation: fadeInLeft;
+
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+  
+}

@@ -1,0 +1,46 @@
+
+span{
+    color:red;
+}
+
+.caro-head{
+    font-size: 27px;
+}
+
+.container{
+  text-align: center;
+  padding-top: 100px;
+}
+.carousel-inner{
+  height: 300px;
+}
+.carousel-caption{
+  margin-bottom: 200px;
+}
+
+.card-img{
+  display: inline-block;
+   animation: zoomIn;
+
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1.5s;
+}
+
+.card{
+  top:50px;
+}
+.c2{
+ color: black;
+ top:20px;
+ 
+ }
+
+ .caro22{
+     font-size: 16px;
+     font-weight: bolder;
+ }
+
+ .caro2{
+   color: whitesmoke;
+ }
+

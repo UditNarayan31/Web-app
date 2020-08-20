@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    
+  <div class="row" style="margin-top:100px;">
+        <div class="col-sm-5">
+         <img [src]="service.payload.val().imageUrl" alt="" width="80%" data-aos="fade-right">
+        </div>
+      
+        <div class="col-sm-5">
+               <div class="card">
+             <div class="card-body">
+                      <div class="card-text">
+                        <h2>{{service.payload.val().caption}}</h2>
+                         <p>{{service.payload.val().card}}</p>
+                        <p>{{service.payload.val().desc}}</p>
+                      </div>
+                      <div class="card-footer">
+                        <h3><i class="fa fa-rupee"></i>{{service.payload.val().admin}}</h3> 
+                      </div>
+              </div>
+           </div>     
+       </div>
+       <div class="col-sm-2">
+        <button class="btn btn-success pull-right" (click)="addToCart(service.payload.val())"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;{{placeholder}}</button>   
+      </div>
+
+<div class="text-center fixed-top" *ngIf="showMess" data-aos="fade-up">
+  <div class="alert">
+    <p>{{addMess}}</p>
+  </div>
+ </div>
+ </div>

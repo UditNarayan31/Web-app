@@ -1,0 +1,25 @@
+img{
+    height: 500px;
+    width: auto;
+   
+}
+i{
+    font-size: 25px;
+}
+
+
+.card{
+    padding:30px;
+}
+
+.container{
+    padding-top: 70px;
+}
+
+p {
+    opacity:1;
+    transition:opacity 500ms;
+}
+p.waa {
+    opacity:0;
+}

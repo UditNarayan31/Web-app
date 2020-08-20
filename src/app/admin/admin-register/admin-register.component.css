@@ -1,0 +1,9 @@
+.container{
+    padding-top: 90px ;
+    
+    animation: zoomIn;
+
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 0.2s; /* don't forget to set a duration! */
+
+}

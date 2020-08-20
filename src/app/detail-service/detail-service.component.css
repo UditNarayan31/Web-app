@@ -1,0 +1,11 @@
+.text-center{
+    padding-top: 100px;
+    width: 60%;
+    margin-left: 20%;
+}
+.alert{
+    background-color: rgba(0, 17, 255, 0.87);
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 400;
+}

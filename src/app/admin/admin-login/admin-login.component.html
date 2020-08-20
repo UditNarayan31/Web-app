@@ -1,0 +1,15 @@
+<div class="authBlock">
+    <h4>Admin Login</h4>
+    <div class="form-group">
+      <label for="email">Admin email</label>
+      <input type="text" id="email" class="form-control" placeholder="Username" #email required>
+    </div>
+    <div class="form-group">
+      <label for="pass">Admin password</label>
+      <input type="password" id="pass" class="form-control" placeholder="Password" #password required>
+    </div>
+    <!-- Calling SignIn Api from AuthenticationService -->
+    <div class="form-group">
+      <input type="button" class="btn btn-primary" value="Log in"  (click)="authenticationService.SignIn(email.value, password.value)">
+    </div>
+  </div>
